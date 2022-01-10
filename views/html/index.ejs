@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+	<link href = "stylesheets/index.css" type = "text/css" rel = "stylesheet">
+	<script src = "../scripts/index.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>CountryCode</th>
+			<th>District</th>
+			<th>Population</th>
+			<th>Edit</th>
+		</tr>
+
+		<% for (var i = 0; i < ui_cities.length; i++) { %>
+			<tr>
+				<form method="post" action="/editCity">
+					<td>
+						<input type="text" name="id" value="<%= ui_cities[i].ID %>" readonly>
+					</td>
+					<td>
+						<input type="text" name="name" value="<%= ui_cities[i].name %>">
+					</td>
+					<td>
+						<input type="text" name="countryCode" value="<%= ui_cities[i].countryCode %>">
+					</td>
+					<td>
+						<input type="text" name="district" value="<%= ui_cities[i].district %>">
+					</td>
+					<td>
+						<input type="text" name="population" value="<%= ui_cities[i].population %>">
+					</td>
+					<td>
+						<input type="submit" value="Edit">
+					</td>
+				</form>
+				
+			</tr>
+		<% } %>
+	</table>
+
+	<div>
+		<div>
+			<div>
+				<h2>Add city to DB</h2>
+			</div>
+			<div>
+				<form method="post" action="/addCity">
+					<label>
+						Name: <input type="text" name="name" required="required">
+					</label>
+					<label>
+						CountryCode: <input type="text" name="countryCode" required="required">
+					</label>
+					<label>
+						District: <input type="text" name="district" required="required">
+					</label>
+					<label>
+						Population: <input type="text" name="population" required="required">
+					</label>
+					
+					<button>Submit</button>
+			  </form>	
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
